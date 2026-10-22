@@ -2,13 +2,10 @@
   "name": "vedant-photography",
   "version": "1.0.0",
   "description": "Vedant Photography Website & Photography Order Booking System",
-  "main": "server.js",
   "scripts": {
-    "build": "cd backend && npm install",
-    "start": "node server.js",
-    "dev": "cd backend && npm run dev",
+    "start": "node backend/server.js",
     "test": "cd backend && npm test",
-    "migrate": "node database/migrate.js"
+    "server": "cd backend && npm start"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
