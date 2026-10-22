@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: vedant-photography-backend
+    runtime: node
+    rootDir: backend
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: CORS_ORIGIN
+        value: "*"
+      - key: JWT_SECRET
+        generateValue: true
+      # Connect to external MySQL (e.g. Aiven, Planetscale) or Render PostgreSQL
+      - key: DATABASE_URL
+        sync: false

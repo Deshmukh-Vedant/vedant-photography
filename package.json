@@ -1,0 +1,14 @@
+{
+  "name": "vedant-photography",
+  "version": "1.0.0",
+  "description": "Vedant Photography Website & Photography Order Booking System",
+  "scripts": {
+    "start": "node backend/server.js",
+    "server": "cd backend && npm start",
+    "server:dev": "cd backend && npm run dev",
+    "test": "cd backend && npm test",
+    "migrate": "node database/migrate.js"
+  },
+  "author": "Vedant Deshmukh",
+  "license": "ISC"
+}

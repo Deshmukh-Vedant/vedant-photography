@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Vedant Photography - Professional Studio & Order Booking</title>
+  <meta content="Vedant Photography - Professional wedding, pre-wedding, baby-shower, sports, travel, and nature photography services since 2005." name="description">
+
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet">
+  <style>
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.85)), url('camera-2.jpg') center/cover no-repeat;
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      padding: 100px 20px 60px;
+    }
+    .hero h1 { font-size: 3rem; font-weight: 800; margin-bottom: 20px; }
+    .hero span { color: #27ae60; }
+    .hero p { font-size: 1.25rem; max-width: 750px; margin: 0 auto 30px; color: #d1d5db; }
+    .btn-hero { background: #27ae60; color: #fff; padding: 12px 32px; border-radius: 30px; font-weight: 700; text-decoration: none; margin: 5px; display: inline-block; transition: 0.3s; }
+    .btn-hero:hover { background: #219653; color: #fff; transform: translateY(-2px); }
+    .btn-hero-outline { border: 2px solid #fff; color: #fff; padding: 10px 30px; border-radius: 30px; font-weight: 600; text-decoration: none; margin: 5px; display: inline-block; transition: 0.3s; }
+    .btn-hero-outline:hover { background: #fff; color: #111; }
+    .category-card { background: #1a1e24; border-radius: 12px; overflow: hidden; border: 1px solid #2e3642; transition: transform 0.3s, box-shadow 0.3s; height: 100%; display: flex; flex-direction: column; }
+    .category-card:hover { transform: translateY(-6px); box-shadow: 0 15px 30px rgba(0,0,0,0.5); }
+    .category-card img { height: 220px; object-fit: cover; width: 100%; }
+    .category-body { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .price-tag { font-size: 1.25rem; font-weight: 700; color: #2ecc71; margin-bottom: 15px; }
+    .stat-box { background: #161a1f; padding: 30px 20px; border-radius: 12px; text-align: center; border: 1px solid #262c36; }
+    .stat-number { font-size: 2.5rem; font-weight: 800; color: #27ae60; }
+    .stat-label { color: #94a3b8; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-lg-0">
+        <img src="vedantlogo.jpeg" alt="Vedant Photography Logo" class="rounded-circle me-2" style="height: 42px; width: 42px; object-fit: cover; border: 2px solid #27ae60;">
+        <span style="font-weight: 700; font-size: 1.2rem; color: #fff;">Vedant Photography</span>
+      </a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown"><a href="#"><span>Categories</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+              <li><a href="marriage.html">Marriage Shoot</a></li>
+              <li><a href="prewedding.html">Pre-Wedding Shoot</a></li>
+              <li><a href="babyshower.html">Baby-Shower</a></li>
+              <li><a href="nature.html">Nature & Wildlife</a></li>
+              <li><a href="sports.html">Sports & Action</a></li>
+              <li><a href="travel.html">Travel & Tourism</a></li>
+            </ul>
+          </li>
+          <li><a href="contact.html">Contact</a></li>
+          <li id="nav-auth"><a href="login.html">Login</a></li>
+          <li id="nav-signup"><a href="signup.html">Sign Up</a></li>
+          <li><a href="book.html" class="btn btn-sm btn-success text-white px-3 py-1 ms-lg-2" style="border-radius: 20px;">Book Now</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-social-links">
+        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="tel:+919975298954" class="phone"><i class="bi bi-telephone"></i></a>
+      </div>
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1>We Capture Moments That <span>Never Fade</span></h1>
+      <p>Welcome to <strong>Vedant Photography</strong>. Proudly serving clients across Maharashtra with premium wedding, portrait, and commercial photography since 2005 with over 300+ satisfied clients every year.</p>
+      <div>
+        <a href="book.html" class="btn-hero"><i class="bi bi-calendar-check me-2"></i>Book Photography Shoot</a>
+        <a href="gallery.html" class="btn-hero-outline"><i class="bi bi-images me-2"></i>Explore Portfolio</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Stats Section -->
+  <section class="py-5" style="background: #0d0f12;">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-3 col-6">
+          <div class="stat-box">
+            <div class="stat-number">18+</div>
+            <div class="stat-label">Years of Experience</div>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="stat-box">
+            <div class="stat-number">3000+</div>
+            <div class="stat-label">Shoots Completed</div>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="stat-box">
+            <div class="stat-number">300+</div>
+            <div class="stat-label">Annual Happy Clients</div>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="stat-box">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Quality Guarantee</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photography Packages & Categories -->
+  <section class="py-5" style="background: #111418;">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 style="color: #fff; font-weight: 700;">Popular Photography Packages</h2>
+        <p style="color: #94a3b8;">Choose your occasion and book your session in minutes</p>
+      </div>
+
+      <div class="row g-4">
+        <!-- Marriage -->
+        <div class="col-lg-4 col-md-6">
+          <div class="category-card">
+            <img src="marriage1.jpg" alt="Marriage Photography">
+            <div class="category-body">
+              <div>
+                <h4 style="color: #fff; font-weight: 700;">Marriage Photography</h4>
+                <p style="color: #94a3b8; font-size: 0.95rem;">Full wedding ceremony coverage, candid bridal & groom portraits, cinematic highlights.</p>
+                <div class="price-tag">₹55,500 /-</div>
+              </div>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <a href="marriage.html" class="text-muted" style="text-decoration:none;"><i class="bi bi-eye me-1"></i>View Gallery</a>
+                <a href="book.html?occasion=Marriage" class="btn btn-sm btn-success px-3">Book Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pre-Wedding -->
+        <div class="col-lg-4 col-md-6">
+          <div class="category-card">
+            <img src="marriage5.jpg" alt="Pre-Wedding Photography">
+            <div class="category-body">
+              <div>
+                <h4 style="color: #fff; font-weight: 700;">Pre-Wedding Shoot</h4>
+                <p style="color: #94a3b8; font-size: 0.95rem;">Romantic outdoor & studio portraits, cinematic couple video teasers, drone aerials.</p>
+                <div class="price-tag">₹6,200 /-</div>
+              </div>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <a href="prewedding.html" class="text-muted" style="text-decoration:none;"><i class="bi bi-eye me-1"></i>View Gallery</a>
+                <a href="book.html?occasion=Pre-wedding" class="btn btn-sm btn-success px-3">Book Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Baby-Shower -->
+        <div class="col-lg-4 col-md-6">
+          <div class="category-card">
+            <img src="baby1.jpeg" alt="Baby-Shower Photography">
+            <div class="category-body">
+              <div>
+                <h4 style="color: #fff; font-weight: 700;">Baby-Shower & Maternity</h4>
+                <p style="color: #94a3b8; font-size: 0.95rem;">Heartwarming celebration coverage, creative maternity poses, family portraits.</p>
+                <div class="price-tag">₹3,000 /-</div>
+              </div>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <a href="babyshower.html" class="text-muted" style="text-decoration:none;"><i class="bi bi-eye me-1"></i>View Gallery</a>
+                <a href="book.html?occasion=Baby-shower" class="btn btn-sm btn-success px-3">Book Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Nature -->
+        <div class="col-lg-4 col-md-6">
+          <div class="category-card">
+            <img src="waterfall.jpg" alt="Nature Photography">
+            <div class="category-body">
+              <div>
+                <h4 style="color: #fff; font-weight: 700;">Nature & Wildlife</h4>
+                <p style="color: #94a3b8; font-size: 0.95rem;">High-res landscapes, wildlife expeditions, fine-art canvas prints.</p>
+                <div class="price-tag">₹1,600 /-</div>
+              </div>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <a href="nature.html" class="text-muted" style="text-decoration:none;"><i class="bi bi-eye me-1"></i>View Gallery</a>
+                <a href="book.html?occasion=Nature" class="btn btn-sm btn-success px-3">Book Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sports -->
+        <div class="col-lg-4 col-md-6">
+          <div class="category-card">
+            <img src="sport1.jpg" alt="Sports Photography">
+            <div class="category-body">
+              <div>
+                <h4 style="color: #fff; font-weight: 700;">Sports & Action</h4>
+                <p style="color: #94a3b8; font-size: 0.95rem;">High-speed freeze frames, tournament action shots, athlete portraits.</p>
+                <div class="price-tag">₹1,200 /-</div>
+              </div>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <a href="sports.html" class="text-muted" style="text-decoration:none;"><i class="bi bi-eye me-1"></i>View Gallery</a>
+                <a href="book.html?occasion=Sports" class="btn btn-sm btn-success px-3">Book Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Travel -->
+        <div class="col-lg-4 col-md-6">
+          <div class="category-card">
+            <img src="t1.jpeg" alt="Travel Photography">
+            <div class="category-body">
+              <div>
+                <h4 style="color: #fff; font-weight: 700;">Travel & Tourism</h4>
+                <p style="color: #94a3b8; font-size: 0.95rem;">Destination photography, heritage sites, resorts, and vacation storytelling.</p>
+                <div class="price-tag">₹1,120 /-</div>
+              </div>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <a href="travel.html" class="text-muted" style="text-decoration:none;"><i class="bi bi-eye me-1"></i>View Gallery</a>
+                <a href="book.html?occasion=Travel" class="btn btn-sm btn-success px-3">Book Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-5" style="background: #090b0e; border-top: 1px solid #1e242d; color: #94a3b8;">
+    <div class="container text-center">
+      <img src="vedantlogo.jpeg" width="60" height="60" class="rounded-circle mb-3" style="object-fit:cover; border:2px solid #27ae60;" alt="Logo">
+      <h4 style="color: #fff;">Vedant Photography Studio</h4>
+      <p class="mb-2">Capturing timeless memories across Maharashtra since 2005</p>
+      <p class="mb-4">Shegaon City, Maharashtra, India &bull; Phone: <a href="tel:+919975298954" style="color:#27ae60;">+91 9975298954</a> &bull; Email: <a href="mailto:vedantdeshmukh331@gmail.com" style="color:#27ae60;">vedantdeshmukh331@gmail.com</a></p>
+      <div class="mb-3">
+        <a href="index.html" class="text-muted me-3">Home</a>
+        <a href="about.html" class="text-muted me-3">About</a>
+        <a href="gallery.html" class="text-muted me-3">Gallery</a>
+        <a href="book.html" class="text-muted me-3">Book Session</a>
+        <a href="contact.html" class="text-muted me-3">Contact</a>
+        <a href="admin.html" class="text-muted">Admin Portal</a>
+      </div>
+      <small>&copy; 2005 - 2026 Vedant Photography. All Rights Reserved.</small>
+    </div>
+  </footer>
+
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script>
+    // Update navbar with logged-in user state
+    document.addEventListener('DOMContentLoaded', () => {
+      const user = API.getCurrentUser();
+      const authLi = document.getElementById('nav-auth');
+      const signupLi = document.getElementById('nav-signup');
+
+      if (user && authLi) {
+        authLi.innerHTML = `<a href="admin.html" style="color: #2ecc71;"><i class="bi bi-person-check me-1"></i>${user.name}</a>`;
+        if (signupLi) {
+          signupLi.innerHTML = `<a href="#" onclick="API.clearSession(); location.reload();">Logout</a>`;
+        }
+      }
+    });
+  </script>
+</body>
+</html>

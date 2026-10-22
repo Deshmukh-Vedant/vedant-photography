@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Contact Us - Vedant Photography</title>
+
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet">
+  <style>
+    .info-box {
+      background: #15181e;
+      border: 1px solid #232833;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .info-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(39, 174, 96, 0.15);
+      color: #27ae60;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+    .form-dark {
+      background: #15181e;
+      border: 1px solid #232833;
+      border-radius: 12px;
+      padding: 30px;
+    }
+    .form-control {
+      background-color: #0d1014;
+      border: 1px solid #29313e;
+      color: #fff;
+      padding: 10px 14px;
+      border-radius: 8px;
+    }
+    .form-control:focus {
+      background-color: #12151b;
+      border-color: #27ae60;
+      color: #fff;
+      box-shadow: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-lg-0">
+        <img src="vedantlogo.jpeg" alt="Logo" class="rounded-circle me-2" style="height: 42px; width: 42px; object-fit: cover;">
+        <span>Vedant Photography</span>
+      </a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown"><a href="#"><span>Categories</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+              <li><a href="marriage.html">Marriage</a></li>
+              <li><a href="prewedding.html">Pre-Wedding</a></li>
+              <li><a href="babyshower.html">Baby-Shower</a></li>
+              <li><a href="nature.html">Nature</a></li>
+              <li><a href="sports.html">Sports</a></li>
+              <li><a href="travel.html">Travel</a></li>
+            </ul>
+          </li>
+          <li><a href="contact.html" class="active">Contact</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="book.html" class="btn btn-sm btn-success text-white px-3 ms-2" style="border-radius:20px;">Book Now</a></li>
+        </ul>
+      </nav>
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="page-header d-flex align-items-center">
+      <div class="container position-relative text-center">
+        <h2>Get in Touch</h2>
+        <p class="text-muted">Have inquiries about packages, custom dates, or destination bookings? We'd love to hear from you.</p>
+      </div>
+    </div>
+
+    <section class="contact py-5">
+      <div class="container">
+        <div class="row g-4">
+          <!-- Contact Info -->
+          <div class="col-lg-5">
+            <div class="info-box">
+              <div class="info-icon"><i class="bi bi-geo-alt"></i></div>
+              <div>
+                <h5 class="mb-1 text-white">Studio Location</h5>
+                <p class="mb-0 text-muted">Shegaon City, Maharashtra, India</p>
+              </div>
+            </div>
+
+            <div class="info-box">
+              <div class="info-icon"><i class="bi bi-telephone"></i></div>
+              <div>
+                <h5 class="mb-1 text-white">Phone Support</h5>
+                <p class="mb-0"><a href="tel:+919975298954" style="color: #27ae60;">+91 9975298954</a></p>
+              </div>
+            </div>
+
+            <div class="info-box">
+              <div class="info-icon"><i class="bi bi-envelope"></i></div>
+              <div>
+                <h5 class="mb-1 text-white">Email Us</h5>
+                <p class="mb-0"><a href="mailto:vedantdeshmukh331@gmail.com" style="color: #27ae60;">vedantdeshmukh331@gmail.com</a></p>
+              </div>
+            </div>
+
+            <div class="info-box">
+              <div class="info-icon"><i class="bi bi-clock"></i></div>
+              <div>
+                <h5 class="mb-1 text-white">Working Hours</h5>
+                <p class="mb-0 text-muted">Mon - Sun: 9:00 AM - 9:00 PM</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <div class="col-lg-7">
+            <div class="form-dark">
+              <h4 class="text-white mb-3 font-weight-bold">Send Us a Message</h4>
+              <div id="contact-alert" class="alert d-none"></div>
+
+              <form id="contact-form">
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label text-muted small">Your Name *</label>
+                    <input type="text" id="contact-name" class="form-control" required placeholder="Full Name">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label text-muted small">Your Email *</label>
+                    <input type="email" id="contact-email" class="form-control" required placeholder="name@example.com">
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label text-muted small">Subject</label>
+                    <input type="text" id="contact-subject" class="form-control" placeholder="e.g. Wedding Shoot Inquiry">
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label text-muted small">Message *</label>
+                    <textarea id="contact-msg" class="form-control" rows="4" required placeholder="Describe your shoot requirements or questions..."></textarea>
+                  </div>
+                  <div class="col-12">
+                    <button type="submit" id="btn-send" class="btn btn-success px-4 py-2" style="border-radius: 8px;">
+                      <i class="bi bi-send me-2"></i>Send Message
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-4 text-center text-muted" style="background:#090b0e; border-top:1px solid #1e242d; margin-top: 60px;">
+    <div class="container">
+      <small>&copy; 2005 - 2026 Vedant Photography. All Rights Reserved.</small>
+    </div>
+  </footer>
+
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('contact-form');
+      const btn = document.getElementById('btn-send');
+      const alertEl = document.getElementById('contact-alert');
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        btn.disabled = true;
+        btn.innerHTML = `<span class="spinner-border spinner-border-sm me-2"></span>Sending...`;
+        alertEl.classList.add('d-none');
+
+        const payload = {
+          name: document.getElementById('contact-name').value,
+          email: document.getElementById('contact-email').value,
+          subject: document.getElementById('contact-subject').value,
+          message: document.getElementById('contact-msg').value
+        };
+
+        try {
+          const res = await API.submitContact(payload);
+          alertEl.className = 'alert alert-success';
+          alertEl.textContent = res.message || 'Message sent successfully!';
+          alertEl.classList.remove('d-none');
+          form.reset();
+        } catch (err) {
+          alertEl.className = 'alert alert-danger';
+          alertEl.textContent = err.message || 'Error sending message. Please try again.';
+          alertEl.classList.remove('d-none');
+        } finally {
+          btn.disabled = false;
+          btn.innerHTML = `<i class="bi bi-send me-2"></i>Send Message`;
+        }
+      });
+    });
+  </script>
+</body>
+</html>

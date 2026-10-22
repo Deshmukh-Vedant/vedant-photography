@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Booking & Payment Receipt - Vedant Photography</title>
+
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body {
+      background: #0f1115;
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 50px 15px;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .receipt-card {
+      max-width: 650px;
+      width: 100%;
+      background: #1a1e24;
+      border-radius: 16px;
+      padding: 40px;
+      border: 1px solid #2e3642;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+    }
+    .receipt-header {
+      border-bottom: 2px dashed #3a4454;
+      padding-bottom: 25px;
+      margin-bottom: 25px;
+      text-align: center;
+    }
+    .receipt-header h2 {
+      color: #27ae60;
+      font-weight: 800;
+      margin-top: 15px;
+      margin-bottom: 5px;
+    }
+    .receipt-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid #262c36;
+      font-size: 0.95rem;
+    }
+    .receipt-label { color: #8a99ad; }
+    .receipt-value { font-weight: 600; color: #fff; }
+    .badge-status {
+      background: #27ae60;
+      color: #fff;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+    .btn-print {
+      background: #27ae60;
+      color: white;
+      border: none;
+      padding: 11px 26px;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-print:hover { background: #219653; }
+    .btn-outline-custom {
+      border: 1px solid #4a5568;
+      color: #cbd5e1;
+      padding: 10px 22px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-left: 10px;
+      display: inline-block;
+    }
+    .btn-outline-custom:hover {
+      background: #2d3748;
+      color: #fff;
+    }
+    @media print {
+      body { background: #fff !important; color: #000 !important; }
+      .receipt-card { background: #fff !important; color: #000 !important; border: 1px solid #ccc !important; box-shadow: none !important; }
+      .receipt-value { color: #000 !important; }
+      .no-print { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="receipt-card">
+    <div class="receipt-header">
+      <img src="vedantlogo.jpeg" width="75" height="75" class="rounded-circle" style="object-fit:cover; border:2px solid #27ae60;" alt="Vedant Photography">
+      <h2>Booking Confirmation & Receipt</h2>
+      <p class="text-muted mb-0">Vedant Photography Studios &bull; Shegaon, Maharashtra</p>
+      <small class="text-muted">Contact: +91 9975298954 | vedantdeshmukh331@gmail.com</small>
+    </div>
+
+    <div class="receipt-row">
+      <span class="receipt-label">Booking Reference:</span>
+      <span class="receipt-value" id="receipt-no">#VP-000000</span>
+    </div>
+    <div class="receipt-row">
+      <span class="receipt-label">Customer Name:</span>
+      <span class="receipt-value" id="customer-name">Valued Customer</span>
+    </div>
+    <div class="receipt-row">
+      <span class="receipt-label">Photography Occasion:</span>
+      <span class="receipt-value" id="occasion-name">Photography Session</span>
+    </div>
+    <div class="receipt-row">
+      <span class="receipt-label">Package Amount:</span>
+      <span class="receipt-value" id="package-amount" style="color: #2ecc71; font-size: 1.1rem;">₹0</span>
+    </div>
+    <div class="receipt-row">
+      <span class="receipt-label">Payment Preference:</span>
+      <span class="receipt-value" id="payment-mode">Online Mode</span>
+    </div>
+    <div class="receipt-row">
+      <span class="receipt-label">Booking Status:</span>
+      <span class="receipt-value"><span class="badge-status">CONFIRMED</span></span>
+    </div>
+    <div class="receipt-row">
+      <span class="receipt-label">Issued Timestamp:</span>
+      <span class="receipt-value" id="issue-date">-</span>
+    </div>
+
+    <div class="mt-4 text-center no-print">
+      <button class="btn-print" onclick="window.print()"><i class="bi bi-printer me-2"></i>Print Receipt</button>
+      <a href="index.html" class="btn-outline-custom">Home</a>
+      <a href="gallery.html" class="btn-outline-custom">View Gallery</a>
+      <a href="admin.html" class="btn-outline-custom" style="border-color:#27ae60; color:#27ae60;">Admin Portal</a>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get('id') || Date.now().toString().slice(-6);
+      const name = params.get('name') || 'Valued Customer';
+      const occasion = params.get('occasion') || 'Custom Photography';
+      const amount = params.get('amount') || '₹1,200';
+      const mode = params.get('mode') || 'Online Mode';
+
+      document.getElementById('receipt-no').textContent = `#VP-${id}`;
+      document.getElementById('customer-name').textContent = decodeURIComponent(name);
+      document.getElementById('occasion-name').textContent = decodeURIComponent(occasion);
+      document.getElementById('package-amount').textContent = decodeURIComponent(amount);
+      document.getElementById('payment-mode').textContent = decodeURIComponent(mode);
+      document.getElementById('issue-date').textContent = new Date().toLocaleString('en-IN');
+    });
+  </script>
+</body>
+</html>

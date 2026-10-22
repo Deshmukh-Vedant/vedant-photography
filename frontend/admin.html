@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Admin Dashboard - Vedant Photography</title>
+
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body {
+      background: #0d0f12;
+      color: #e2e8f0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      min-height: 100vh;
+    }
+    .sidebar {
+      background: #14171c;
+      border-right: 1px solid #242933;
+      min-height: 100vh;
+      padding: 30px 20px;
+    }
+    .sidebar-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 40px;
+      color: #fff;
+      text-decoration: none;
+    }
+    .sidebar-brand img {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #27ae60;
+    }
+    .nav-link-custom {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      color: #94a3b8;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-bottom: 8px;
+      transition: all 0.2s;
+    }
+    .nav-link-custom:hover, .nav-link-custom.active {
+      background: #1e242d;
+      color: #27ae60;
+    }
+    .main-content {
+      padding: 35px 30px;
+    }
+    .stat-card {
+      background: #161a20;
+      border: 1px solid #262c37;
+      border-radius: 12px;
+      padding: 24px;
+      height: 100%;
+    }
+    .stat-value {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #fff;
+      margin-top: 5px;
+    }
+    .stat-label {
+      color: #94a3b8;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .panel-card {
+      background: #161a20;
+      border: 1px solid #262c37;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 30px;
+    }
+    .table-custom {
+      color: #cbd5e1;
+      vertical-align: middle;
+    }
+    .table-custom th {
+      background: #1c2129;
+      color: #94a3b8;
+      border-bottom: 1px solid #2e3644;
+      font-weight: 600;
+      padding: 14px 16px;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+    }
+    .table-custom td {
+      border-bottom: 1px solid #222731;
+      padding: 14px 16px;
+      font-size: 0.95rem;
+    }
+    .badge-pending { background: #d97706; color: #fff; padding: 4px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: 700; }
+    .badge-confirmed { background: #2563eb; color: #fff; padding: 4px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: 700; }
+    .badge-completed { background: #16a34a; color: #fff; padding: 4px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: 700; }
+    .badge-cancelled { background: #dc2626; color: #fff; padding: 4px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: 700; }
+    .form-control-dark, .form-select-dark {
+      background-color: #0e1115;
+      border: 1px solid #2e3644;
+      color: #fff;
+      border-radius: 8px;
+      padding: 8px 12px;
+    }
+    .form-control-dark:focus, .form-select-dark:focus {
+      background-color: #12161b;
+      border-color: #27ae60;
+      color: #fff;
+      box-shadow: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container-fluid">
+  <div class="row">
+    <!-- Sidebar -->
+    <div class="col-lg-2 col-md-3 sidebar d-none d-md-block">
+      <a href="index.html" class="sidebar-brand">
+        <img src="vedantlogo.jpeg" alt="Logo">
+        <div>
+          <strong style="display:block; font-size: 1rem; color:#fff;">Vedant Studios</strong>
+          <small class="text-muted">Admin Portal</small>
+        </div>
+      </a>
+
+      <nav>
+        <a href="#overview" class="nav-link-custom active"><i class="bi bi-speedometer2"></i> Dashboard</a>
+        <a href="#bookings-section" class="nav-link-custom"><i class="bi bi-calendar2-check"></i> Orders & Bookings</a>
+        <a href="#inquiries-section" class="nav-link-custom"><i class="bi bi-chat-left-dots"></i> Client Inquiries</a>
+        <a href="#upload-section" class="nav-link-custom"><i class="bi bi-cloud-upload"></i> Portfolio Upload</a>
+        <hr style="border-color: #242933; margin: 20px 0;">
+        <a href="index.html" class="nav-link-custom"><i class="bi bi-house"></i> View Live Site</a>
+        <a href="#" onclick="API.clearSession(); window.location.href='login.html';" class="nav-link-custom text-danger"><i class="bi bi-box-arrow-right"></i> Logout</a>
+      </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="col-lg-10 col-md-9 main-content">
+      <!-- Header -->
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+          <h2 style="font-weight: 700; color: #fff; margin-bottom: 4px;">Studio Order Management</h2>
+          <p class="text-muted mb-0">Overview of photography sessions, appointments, and client inquiries.</p>
+        </div>
+        <div class="d-flex gap-2">
+          <button class="btn btn-outline-light btn-sm" onclick="loadDashboard()"><i class="bi bi-arrow-clockwise me-1"></i>Refresh</button>
+          <a href="book.html" class="btn btn-success btn-sm"><i class="bi bi-plus-circle me-1"></i>New Booking</a>
+        </div>
+      </div>
+
+      <!-- Stats Cards -->
+      <div class="row g-3 mb-4" id="overview">
+        <div class="col-xl-3 col-sm-6">
+          <div class="stat-card">
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="stat-label">Total Bookings</span>
+              <i class="bi bi-camera text-success fs-4"></i>
+            </div>
+            <div class="stat-value" id="stat-total-bookings">0</div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-sm-6">
+          <div class="stat-card">
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="stat-label">Pending Orders</span>
+              <i class="bi bi-hourglass-split text-warning fs-4"></i>
+            </div>
+            <div class="stat-value text-warning" id="stat-pending-bookings">0</div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-sm-6">
+          <div class="stat-card">
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="stat-label">Confirmed Shoots</span>
+              <i class="bi bi-check2-circle text-primary fs-4"></i>
+            </div>
+            <div class="stat-value text-primary" id="stat-confirmed-bookings">0</div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-sm-6">
+          <div class="stat-card">
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="stat-label">Client Inquiries</span>
+              <i class="bi bi-envelope text-info fs-4"></i>
+            </div>
+            <div class="stat-value text-info" id="stat-total-contacts">0</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bookings Management Panel -->
+      <div class="panel-card" id="bookings-section">
+        <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
+          <h4 style="color: #fff; font-weight: 700; margin-bottom: 0;">Recent Photography Orders</h4>
+          <div class="d-flex gap-2">
+            <input type="text" id="search-booking" class="form-control-dark" placeholder="Search customer or city..." onkeyup="filterBookings()">
+            <select id="filter-status" class="form-select-dark" onchange="filterBookings()">
+              <option value="">All Statuses</option>
+              <option value="Pending">Pending</option>
+              <option value="Confirmed">Confirmed</option>
+              <option value="Completed">Completed</option>
+              <option value="Cancelled">Cancelled</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="table table-custom">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Customer</th>
+                <th>Occasion</th>
+                <th>Package & Fees</th>
+                <th>Location</th>
+                <th>Shoot Date</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="bookings-tbody">
+              <tr>
+                <td colspan="8" class="text-center py-4 text-muted">
+                  <div class="spinner-border spinner-border-sm me-2 text-success"></div>Loading orders...
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Client Inquiries Panel -->
+      <div class="panel-card" id="inquiries-section">
+        <h4 style="color: #fff; font-weight: 700; margin-bottom: 20px;">Client Messages & Contact Inquiries</h4>
+        <div class="table-responsive">
+          <table class="table table-custom">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Subject</th>
+                <th>Message</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="inquiries-tbody">
+              <tr>
+                <td colspan="6" class="text-center py-4 text-muted">Loading messages...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Image Upload Section -->
+      <div class="panel-card" id="upload-section">
+        <h4 style="color: #fff; font-weight: 700; margin-bottom: 8px;">Upload Photos to Studio Gallery</h4>
+        <p class="text-muted">Directly upload high-resolution images to the portfolio gallery.</p>
+
+        <form id="upload-form" class="row g-3">
+          <div class="col-md-4">
+            <label class="form-label text-muted">Photo Title</label>
+            <input type="text" id="upload-title" class="form-control-dark w-100" placeholder="e.g. Royal Wedding Candid">
+          </div>
+          <div class="col-md-3">
+            <label class="form-label text-muted">Category</label>
+            <select id="upload-category" class="form-select-dark w-100">
+              <option value="Marriage">Marriage</option>
+              <option value="Prewedding">Pre-Wedding</option>
+              <option value="Babyshower">Baby-Shower</option>
+              <option value="Nature">Nature</option>
+              <option value="Sports">Sports</option>
+              <option value="Travel">Travel</option>
+            </select>
+          </div>
+          <div class="col-md-5">
+            <label class="form-label text-muted">Select Image File</label>
+            <input type="file" id="upload-file" class="form-control-dark w-100" accept="image/*" required>
+          </div>
+          <div class="col-12">
+            <button type="submit" id="btn-upload" class="btn btn-success px-4"><i class="bi bi-cloud-arrow-up me-2"></i>Upload Photo</button>
+            <span id="upload-msg" class="ms-3"></span>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script>
+  let allBookings = [];
+
+  document.addEventListener('DOMContentLoaded', () => {
+    loadDashboard();
+
+    // Upload photo listener
+    const uploadForm = document.getElementById('upload-form');
+    const btnUpload = document.getElementById('btn-upload');
+    const uploadMsg = document.getElementById('upload-msg');
+
+    uploadForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const file = document.getElementById('upload-file').files[0];
+      const title = document.getElementById('upload-title').value;
+      const category = document.getElementById('upload-category').value;
+
+      if (!file) return;
+      btnUpload.disabled = true;
+      btnUpload.innerHTML = `<span class="spinner-border spinner-border-sm me-2"></span>Uploading...`;
+      uploadMsg.innerHTML = '';
+
+      try {
+        const res = await API.uploadImage(file, title, category);
+        uploadMsg.innerHTML = `<span class="text-success"><i class="bi bi-check-circle me-1"></i>Uploaded: ${res.file.filename}</span>`;
+        uploadForm.reset();
+      } catch (err) {
+        uploadMsg.innerHTML = `<span class="text-danger"><i class="bi bi-exclamation-triangle me-1"></i>${err.message}</span>`;
+      } finally {
+        btnUpload.disabled = false;
+        btnUpload.innerHTML = `<i class="bi bi-cloud-arrow-up me-2"></i>Upload Photo`;
+      }
+    });
+  });
+
+  async function loadDashboard() {
+    // 1. Load Stats
+    try {
+      const statsRes = await API.getStats();
+      if (statsRes.success) {
+        document.getElementById('stat-total-bookings').textContent = statsRes.data.totalBookings;
+        document.getElementById('stat-pending-bookings').textContent = statsRes.data.pendingBookings;
+        document.getElementById('stat-confirmed-bookings').textContent = statsRes.data.confirmedBookings;
+        document.getElementById('stat-total-contacts').textContent = statsRes.data.totalContacts;
+      }
+    } catch (e) {
+      console.warn('Stats fetch issue:', e.message);
+    }
+
+    // 2. Load Bookings
+    try {
+      const bookingsRes = await API.getBookings();
+      if (bookingsRes.success) {
+        allBookings = bookingsRes.data;
+        renderBookings(allBookings);
+      }
+    } catch (e) {
+      document.getElementById('bookings-tbody').innerHTML = `<tr><td colspan="8" class="text-center text-danger py-4">Error loading orders: ${e.message}</td></tr>`;
+    }
+
+    // 3. Load Inquiries
+    try {
+      const inqRes = await API.getInquiries();
+      if (inqRes.success) {
+        renderInquiries(inqRes.data);
+      }
+    } catch (e) {
+      document.getElementById('inquiries-tbody').innerHTML = `<tr><td colspan="6" class="text-center text-danger py-4">Error loading messages: ${e.message}</td></tr>`;
+    }
+  }
+
+  function renderBookings(list) {
+    const tbody = document.getElementById('bookings-tbody');
+    if (!list || list.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="8" class="text-center py-4 text-muted">No orders found.</td></tr>`;
+      return;
+    }
+
+    tbody.innerHTML = list.map(b => {
+      const statusClass = (b.status || 'Pending').toLowerCase();
+      return `
+        <tr>
+          <td><strong>#${b.id || '-'}</strong></td>
+          <td>
+            <strong>${escapeHtml(b.name || 'Anonymous')}</strong>
+            <small class="d-block text-muted">${escapeHtml(b.email || '')}</small>
+          </td>
+          <td><span class="badge bg-dark border border-secondary">${escapeHtml(b.occasion || 'Custom')}</span></td>
+          <td>
+            <div style="font-weight:600; color:#2ecc71;">${escapeHtml(b.course || 'Package')}</div>
+            <small class="text-muted">${escapeHtml(b.fees || 'Online')}</small>
+          </td>
+          <td>${escapeHtml(b.city || 'Shegaon')}</td>
+          <td>${escapeHtml(b.booking_date || 'TBD')}</td>
+          <td>
+            <select class="form-select-dark form-select-sm" onchange="changeStatus(${b.id}, this.value)">
+              <option value="Pending" ${b.status === 'Pending' ? 'selected' : ''}>Pending</option>
+              <option value="Confirmed" ${b.status === 'Confirmed' ? 'selected' : ''}>Confirmed</option>
+              <option value="Completed" ${b.status === 'Completed' ? 'selected' : ''}>Completed</option>
+              <option value="Cancelled" ${b.status === 'Cancelled' ? 'selected' : ''}>Cancelled</option>
+            </select>
+          </td>
+          <td>
+            <button class="btn btn-sm btn-outline-danger" onclick="deleteBooking(${b.id})" title="Delete Order">
+              <i class="bi bi-trash"></i>
+            </button>
+          </td>
+        </tr>
+      `;
+    }).join('');
+  }
+
+  function filterBookings() {
+    const query = document.getElementById('search-booking').value.toLowerCase();
+    const status = document.getElementById('filter-status').value;
+
+    const filtered = allBookings.filter(b => {
+      const matchQuery = (b.name && b.name.toLowerCase().includes(query)) || (b.city && b.city.toLowerCase().includes(query));
+      const matchStatus = !status || b.status === status;
+      return matchQuery && matchStatus;
+    });
+
+    renderBookings(filtered);
+  }
+
+  async function changeStatus(id, newStatus) {
+    try {
+      await API.updateBookingStatus(id, newStatus);
+      const b = allBookings.find(item => item.id == id);
+      if (b) b.status = newStatus;
+      loadDashboard();
+    } catch (e) {
+      alert('Error updating status: ' + e.message);
+    }
+  }
+
+  async function deleteBooking(id) {
+    if (!confirm(`Are you sure you want to cancel and delete Order #${id}?`)) return;
+    try {
+      await API.deleteBooking(id);
+      allBookings = allBookings.filter(item => item.id != id);
+      renderBookings(allBookings);
+      loadDashboard();
+    } catch (e) {
+      alert('Error deleting order: ' + e.message);
+    }
+  }
+
+  function renderInquiries(list) {
+    const tbody = document.getElementById('inquiries-tbody');
+    if (!list || list.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="6" class="text-center py-4 text-muted">No client messages received.</td></tr>`;
+      return;
+    }
+
+    tbody.innerHTML = list.map(inq => `
+      <tr>
+        <td>#${inq.id || '-'}</td>
+        <td><strong>${escapeHtml(inq.name || '')}</strong></td>
+        <td><a href="mailto:${inq.email}" class="text-success">${escapeHtml(inq.email || '')}</a></td>
+        <td>${escapeHtml(inq.subject || 'Inquiry')}</td>
+        <td style="max-width: 300px;"><small>${escapeHtml(inq.message || '')}</small></td>
+        <td>
+          <button class="btn btn-sm btn-outline-danger" onclick="deleteInquiry(${inq.id})"><i class="bi bi-trash"></i></button>
+        </td>
+      </tr>
+    `).join('');
+  }
+
+  async function deleteInquiry(id) {
+    if (!confirm(`Delete message #${id}?`)) return;
+    try {
+      await API.deleteInquiry(id);
+      loadDashboard();
+    } catch (e) {
+      alert('Error: ' + e.message);
+    }
+  }
+
+  function escapeHtml(str) {
+    if (!str) return '';
+    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+</script>
+</body>
+</html>

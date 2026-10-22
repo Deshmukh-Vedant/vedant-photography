@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Book Photography Session - Vedant Photography</title>
+
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet">
+  <style>
+    body {
+      background: #0b0d10;
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .booking-container {
+      max-width: 700px;
+      margin: 100px auto 50px;
+      background: #161a20;
+      border: 1px solid #28313e;
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+    }
+    .booking-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+      text-align: center;
+      margin-bottom: 5px;
+    }
+    .booking-subtitle {
+      color: #94a3b8;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .form-label {
+      font-weight: 600;
+      color: #cbd5e1;
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+    }
+    .form-control, .form-select {
+      background-color: #0f1216;
+      border: 1px solid #333d4d;
+      color: #fff;
+      padding: 11px 14px;
+      border-radius: 8px;
+    }
+    .form-control:focus, .form-select:focus {
+      background-color: #14181d;
+      border-color: #27ae60;
+      color: #fff;
+      box-shadow: 0 0 0 0.25rem rgba(39, 174, 96, 0.25);
+    }
+    .price-box {
+      background: #1f252e;
+      border: 1px dashed #27ae60;
+      border-radius: 10px;
+      padding: 16px;
+      text-align: center;
+      margin: 20px 0;
+    }
+    .price-display {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: #2ecc71;
+    }
+    .btn-submit-booking {
+      background: #27ae60;
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 700;
+      padding: 13px;
+      border-radius: 8px;
+      border: none;
+      width: 100%;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .btn-submit-booking:hover {
+      background: #219653;
+    }
+    .alert-custom {
+      display: none;
+      padding: 14px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-lg-0">
+        <img src="vedantlogo.jpeg" alt="Logo" class="rounded-circle me-2" style="height: 40px; width: 40px; object-fit: cover;">
+        <span>Vedant Photography</span>
+      </a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li id="nav-user"><a href="login.html">Login</a></li>
+        </ul>
+      </nav>
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="booking-container">
+      <div class="text-center mb-3">
+        <img src="vedantlogo.jpeg" width="75" height="75" class="rounded-circle" style="object-fit:cover; border: 2px solid #27ae60;" alt="Logo">
+      </div>
+      <h1 class="booking-title">Book a Photography Session</h1>
+      <p class="booking-subtitle">Lock in your dates with Vedant Photography. Fast, transparent, and trusted since 2005.</p>
+
+      <div id="alert-box" class="alert-custom"></div>
+
+      <form id="booking-form">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label">Full Name / Customer Name *</label>
+            <input type="text" id="username" name="username" class="form-control" required placeholder="e.g. Rahul Sharma">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Email Address *</label>
+            <input type="email" id="email" name="email" class="form-control" required placeholder="e.g. rahul@example.com">
+          </div>
+
+          <div class="col-md-4">
+            <label class="form-label">Security PIN / Password *</label>
+            <input type="password" id="pass" name="pass" class="form-control" required placeholder="Choose a 4+ digit PIN">
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Age *</label>
+            <input type="number" id="age" name="age" class="form-control" required min="1" max="120" placeholder="e.g. 26">
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">City / Location *</label>
+            <input type="text" id="city" name="city" class="form-control" required placeholder="e.g. Shegaon / Mumbai">
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">Photography Occasion *</label>
+            <select id="occasion" name="occasion" class="form-select" required>
+              <option value="">-- Choose Occasion --</option>
+              <option value="Marriage">Marriage (Full Wedding)</option>
+              <option value="Pre-wedding">Pre-Wedding Shoot</option>
+              <option value="Baby-shower">Baby-Shower & Maternity</option>
+              <option value="Nature">Nature & Wildlife</option>
+              <option value="Sports">Sports & Action</option>
+              <option value="Travel">Travel & Destination</option>
+            </select>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">Shoot Date *</label>
+            <input type="date" id="booking_date" name="booking_date" class="form-control" required>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">Package & Pricing *</label>
+            <select id="course" name="course" class="form-select" required>
+              <option value="">-- Select Package --</option>
+              <option value="Marriage 55,500Rs/-" data-price="₹55,500">Marriage - ₹55,500</option>
+              <option value="Pre-wedding 6,200Rs/-" data-price="₹6,200">Pre-wedding - ₹6,200</option>
+              <option value="Baby-shower 3,000Rs/-" data-price="₹3,000">Baby-shower - ₹3,000</option>
+              <option value="Nature 1,600Rs/-" data-price="₹1,600">Nature - ₹1,600</option>
+              <option value="Sports 1,200Rs/-" data-price="₹1,200">Sports - ₹1,200</option>
+              <option value="Travel 1,120Rs/-" data-price="₹1,120">Travel - ₹1,120</option>
+            </select>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">Payment Preference *</label>
+            <select id="fees" name="fees" class="form-select" required>
+              <option value="Online Mode">Online Mode (Card / UPI / NetBanking)</option>
+              <option value="Offline Mode">Offline Mode (Cash on Event Day)</option>
+            </select>
+          </div>
+
+          <div class="col-12">
+            <label class="form-label">Special Requirements / Notes (Optional)</label>
+            <textarea id="notes" name="notes" class="form-control" rows="2" placeholder="Tell us about your venue, preferred style, or specific shots..."></textarea>
+          </div>
+
+          <div class="col-12">
+            <label class="form-label">Reference Photo / Moodboard (Optional Image Upload)</label>
+            <input type="file" id="reference_image" class="form-control" accept="image/*">
+            <small class="text-muted">Upload an inspiration photo or venue image (JPEG, PNG, WebP up to 10MB)</small>
+          </div>
+        </div>
+
+        <div class="price-box">
+          <div style="font-size: 0.9rem; color: #94a3b8; text-transform: uppercase;">Estimated Package Total</div>
+          <div id="price-display" class="price-display">₹0</div>
+        </div>
+
+        <button type="submit" id="btn-submit" class="btn-submit-booking">
+          <i class="bi bi-check-circle me-2"></i>Confirm & Submit Booking
+        </button>
+
+        <div class="text-center mt-3">
+          <a href="index.html" class="text-muted" style="text-decoration: none;"><i class="bi bi-arrow-left me-1"></i>Back to Home</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Auto fill if logged in
+      const user = API.getCurrentUser();
+      if (user) {
+        if (user.name) document.getElementById('username').value = user.name;
+        if (user.email) document.getElementById('email').value = user.email;
+        const navUser = document.getElementById('nav-user');
+        if (navUser) {
+          navUser.innerHTML = `<span style="color: #27ae60;"><i class="bi bi-person me-1"></i>${user.name}</span>`;
+        }
+      }
+
+      // Check URL query parameters for pre-selected occasion
+      const params = new URLSearchParams(window.location.search);
+      const urlOccasion = params.get('occasion');
+      const occasionSelect = document.getElementById('occasion');
+      const courseSelect = document.getElementById('course');
+      const priceDisplay = document.getElementById('price-display');
+
+      if (urlOccasion) {
+        occasionSelect.value = urlOccasion;
+        matchCourseToOccasion(urlOccasion);
+      }
+
+      // Set minimum date to today
+      const today = new Date().toISOString().split('T')[0];
+      document.getElementById('booking_date').setAttribute('min', today);
+
+      occasionSelect.addEventListener('change', (e) => {
+        matchCourseToOccasion(e.target.value);
+      });
+
+      courseSelect.addEventListener('change', updatePrice);
+
+      function matchCourseToOccasion(occ) {
+        for (let i = 0; i < courseSelect.options.length; i++) {
+          if (courseSelect.options[i].value.toLowerCase().includes(occ.toLowerCase())) {
+            courseSelect.selectedIndex = i;
+            break;
+          }
+        }
+        updatePrice();
+      }
+
+      function updatePrice() {
+        const selected = courseSelect.options[courseSelect.selectedIndex];
+        const price = selected?.getAttribute('data-price') || '₹0';
+        priceDisplay.textContent = price;
+      }
+
+      // Form submission
+      const form = document.getElementById('booking-form');
+      const btn = document.getElementById('btn-submit');
+      const alertBox = document.getElementById('alert-box');
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        btn.disabled = true;
+        btn.innerHTML = `<span class="spinner-border spinner-border-sm me-2"></span>Processing...`;
+        alertBox.style.display = 'none';
+
+        try {
+          let refImageUrl = '';
+          const fileInput = document.getElementById('reference_image');
+          if (fileInput.files.length > 0) {
+            try {
+              const uploadRes = await API.uploadImage(fileInput.files[0], 'Booking Reference', occasionSelect.value);
+              refImageUrl = uploadRes.file.url;
+            } catch (upErr) {
+              console.warn('Reference upload skipped:', upErr.message);
+            }
+          }
+
+          const bookingPayload = {
+            username: document.getElementById('username').value,
+            email: document.getElementById('email').value,
+            pass: document.getElementById('pass').value,
+            age: document.getElementById('age').value,
+            city: document.getElementById('city').value,
+            occasion: occasionSelect.value,
+            course: courseSelect.value,
+            fees: document.getElementById('fees').value,
+            booking_date: document.getElementById('booking_date').value,
+            notes: document.getElementById('notes').value,
+            reference_image: refImageUrl
+          };
+
+          const res = await API.createBooking(bookingPayload);
+
+          if (res.success) {
+            const bookingId = res.booking?.id || Date.now().toString().slice(-5);
+            const amount = priceDisplay.textContent;
+            const customerName = encodeURIComponent(bookingPayload.username);
+            const occasion = encodeURIComponent(bookingPayload.occasion);
+
+            // Redirect to receipt
+            window.location.href = `receipt.html?id=${bookingId}&name=${customerName}&occasion=${occasion}&amount=${encodeURIComponent(amount)}&mode=${encodeURIComponent(bookingPayload.fees)}`;
+          } else {
+            throw new Error(res.message || 'Failed to place booking.');
+          }
+        } catch (err) {
+          alertBox.className = 'alert-custom bg-danger text-white';
+          alertBox.textContent = err.message || 'Error submitting booking. Please try again.';
+          alertBox.style.display = 'block';
+          btn.disabled = false;
+          btn.innerHTML = `<i class="bi bi-check-circle me-2"></i>Confirm & Submit Booking`;
+        }
+      });
+    });
+  </script>
+</body>
+</html>

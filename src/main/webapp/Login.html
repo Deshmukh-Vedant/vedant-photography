@@ -1,0 +1,268 @@
+<!---Log-in-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <title>Log-in Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: black;
+            /* background-image: url('/img/21.jpg');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat; */
+            height: 100vh;
+            background-image: url('img2.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /*nav */
+        header {
+            padding: 1.7rem 1rem;
+            background-color: transparent;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            max-width: 80%;
+            margin: auto;
+            background: transparent;
+            backdrop-filter: blur(3px);
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 800;
+        }
+
+        .logo a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            padding: 0;
+            background-color: transparent;
+            overflow: hidden;
+        }
+
+        li {
+            padding: 0rem 1.1rem;
+            float: left;
+        }
+
+        li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: .7px;
+        }
+
+        li a.active,
+        li a:hover {
+            color: #c30071;
+            transition: all .3s ease-in-out
+        }
+
+        #click {
+            display: none;
+        }
+
+        .menu {
+            display: none;
+        }
+
+        @media only screen and (max-width:1024px) {
+            nav {
+                max-width: 98%;
+            }
+        }
+
+        @media only screen and (max-width:768px) {
+            html {
+                font-size: 80%;
+            }
+
+            nav {
+                max-width: 100%;
+            }
+        }
+
+        @media only screen and (max-width:480px) {
+            html {
+                font-size: 85%;
+            }
+
+            header {
+                height: 100vh;
+            }
+            li {
+                padding: 1rem 1.1rem;
+            }
+            .menu {
+                display: block;
+                font-size: 1.5rem;
+                font-weight: bold;
+                color: #fff;
+            }
+            ul {
+                width: 100%;
+                height: 100vh;
+                position: absolute;
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+                top: 4rem;
+                left: -100%;
+            }
+            #click:checked~ul {
+                left: 0%;
+                transition: all 0.3s ease;
+            }
+
+        }
+        section {
+           
+            height: 100vh;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .login-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 400px;
+            padding: 40px;
+            margin: 20px auto;
+            transform: translate(-50%, -55%);
+            background: transparent;
+            backdrop-filter: blur(3px);
+            box-sizing: border-box;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
+            border-radius: 10px;
+        }
+
+        .login-box p:first-child {
+            margin: 0 0 30px;
+            padding: 0;
+            color: white;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .login-box .user-box {
+            position: relative;
+        }
+
+        .login-box .user-box input {
+            width: 100%;
+            padding: 10px 0;
+            font-size: 16px;
+            color:white;
+            margin-bottom: 30px;
+            border: none;
+            border-bottom: 1px solid white;
+            outline: none;
+            background: transparent;
+        }
+
+        .login-box .user-box label {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 10px 0;
+            font-size: 16px;
+            color: white;
+            pointer-events: none;
+            transition: .5s;
+        }
+
+        .login-box .user-box input:focus~label,
+        .login-box .user-box input:valid~label {
+            top: -20px;
+            left: 0;
+            color:white;
+            font-size: 12px;
+        }
+
+        .login-box form a {
+            position: relative;
+            display: inline-block;
+            padding: 10px 20px;
+            font-weight: bold;
+            color: #fff;
+            font-size: 16px;
+            text-decoration: none;
+            text-transform: uppercase;
+            overflow: hidden;
+            transition: .5s;
+            margin-top: 40px;
+            letter-spacing: 3px
+        }
+
+        .login-box a:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 24px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="#">Portfolio.</a>
+            </div>
+            <input type="checkbox" id="click">
+            <label for="click" class="mainicon">
+                <div class="menu">
+                    <i class="bi bi-list"></i>
+                </div>
+            </label>
+            <ul>
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Skills</a></li>
+                <li><a href="#">Portfolio</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <div class="login-box">
+            <p>Login</p>
+            <form>
+                <div class="user-box">
+                    <input required="true" name="" type="email">
+                    <label>Email</label>
+                </div>
+                <div class="user-box">
+                    <input required="true" name="" type="password">
+                    <label>Password</label>
+                </div>
+                <a href="#">Submit</a>
+            </form>
+        </div>
+    </section>
+</body>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap');
+</style>
+</html>

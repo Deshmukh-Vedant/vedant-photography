@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Gallery - Vedant Photography</title>
+
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet">
+  <style>
+    .filter-btn {
+      background: #161a20;
+      border: 1px solid #2a3340;
+      color: #94a3b8;
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin: 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: #27ae60;
+      color: #fff;
+      border-color: #27ae60;
+    }
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      height: 270px;
+      background: #111;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s;
+    }
+    .gallery-item:hover img {
+      transform: scale(1.08);
+    }
+    .gallery-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.5);
+      opacity: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.3s;
+    }
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+    .zoom-btn {
+      background: #27ae60;
+      color: #fff;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-lg-0">
+        <img src="vedantlogo.jpeg" alt="Logo" class="rounded-circle me-2" style="height: 42px; width: 42px; object-fit: cover;">
+        <span>Vedant Photography</span>
+      </a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="gallery.html" class="active">Gallery</a></li>
+          <li class="dropdown"><a href="#"><span>Categories</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+              <li><a href="marriage.html">Marriage</a></li>
+              <li><a href="prewedding.html">Pre-Wedding</a></li>
+              <li><a href="babyshower.html">Baby-Shower</a></li>
+              <li><a href="nature.html">Nature</a></li>
+              <li><a href="sports.html">Sports</a></li>
+              <li><a href="travel.html">Travel</a></li>
+            </ul>
+          </li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="book.html" class="btn btn-sm btn-success text-white px-3 ms-2" style="border-radius:20px;">Book Now</a></li>
+        </ul>
+      </nav>
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="page-header d-flex align-items-center">
+      <div class="container position-relative text-center">
+        <h2>Photography Portfolio Gallery</h2>
+        <p class="text-muted">Explore our signature captures across diverse themes and celebrations.</p>
+        <a href="book.html" class="btn btn-success px-4 py-2 mt-2" style="border-radius: 25px;"><i class="bi bi-calendar-check me-2"></i>Book This Style</a>
+      </div>
+    </div>
+
+    <!-- Gallery Filter Buttons -->
+    <div class="container text-center mb-5">
+      <button class="filter-btn active" data-filter="all">All Photos</button>
+      <button class="filter-btn" data-filter="marriage">Marriage</button>
+      <button class="filter-btn" data-filter="prewedding">Pre-Wedding</button>
+      <button class="filter-btn" data-filter="babyshower">Baby-Shower</button>
+      <button class="filter-btn" data-filter="nature">Nature</button>
+      <button class="filter-btn" data-filter="sports">Sports</button>
+      <button class="filter-btn" data-filter="travel">Travel</button>
+    </div>
+
+    <!-- Gallery Grid -->
+    <section class="gallery pt-0">
+      <div class="container-fluid px-lg-5">
+        <div class="row g-4" id="gallery-container">
+          <!-- Marriage -->
+          <div class="col-xl-3 col-lg-4 col-md-6 gallery-box" data-cat="marriage">
+            <div class="gallery-item">
+              <img src="marriage1.jpg" alt="Wedding">
+              <div class="gallery-overlay"><a href="marriage1.jpg" class="glightbox zoom-btn"><i class="bi bi-zoom-in"></i></a></div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-6 gallery-box" data-cat="marriage">
+            <div class="gallery-item">
+              <img src="marriage2.jpeg" alt="Wedding Candid">
+              <div class="gallery-overlay"><a href="marriage2.jpeg" class="glightbox zoom-btn"><i class="bi bi-zoom-in"></i></a></div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-6 gallery-box" data-cat="marriage">
+            <div class="gallery-item">
+              <img src="marriage6.jpg" alt="Wedding Rituals">
+              <div class="gallery-overlay"><a href="marriage6.jpg" class="glightbox zoom-btn"><i class="bi bi-zoom-in"></i></a></div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-6 gallery-box" data-cat="marriage">
+            <div class="gallery-item">
+              <img src="wedding.jpg" alt="Wedding Mandap">
+              <div class="gallery-overlay"><a href="wedding.jpg" class="glightbox zoom-btn"><i class="bi bi-zoom-in"></i></a></div>
+            </div>
+          </div>
+
+          <!-- Pre-Wedding -->
+          <div class="col-xl-3 col-lg-4 col-md-6 gallery-box" data-cat="prewedding">
+            <div class="gallery-item">
+              <img src="marriage5.jpg" alt="Pre-Wedding Romance">
+              <div class="gallery-overlay"><a href="marriage5.jpg" class="glightbox zoom-btn"><i class="bi bi-zoom-in"></i></a></div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-6 gallery-box" data-cat="prewedding">
+            <div class="gallery-item">
+              <img src="marriage3.jpg" alt="Couple Shoot">
+              <div class="gallery-overlay"><a href="marriage3.jpg" class="glightbox zoom-btn"><i class="bi bi-zoom-in"></i></a></div>
+            </div>
+          </div>
+
+          <!-- Baby-Shower -->
+          <div class="col-xl-3 col-lg-4 col-md-6 gallery-box" data-cat="babyshower">
+            <div class="gallery-item">
+              <img src="baby1.jpeg" alt="Baby Portrait">
+              <div class="gallery-overlay"><a href="baby1.jpeg" class="glightbox zoom-btn"><i class="bi bi-zoom-in"></i></a></div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-6 gallery-box" data-cat="babyshower">
+            <div class="gallery-item">
+              <img src="baby2.jpeg" alt="Maternity Moments">
+              <div class="gallery-overlay"><a href="baby2.jpeg" class="glightbox zoom-btn"><i class="bi bi-zoom-in"></i></a></div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-6 gallery-box" data-cat="babyshower">
+            <div class="gallery-item">
+              <img src="baby3.jpeg" alt="Baby Shower Smiles">
+              <div class="gallery-overlay"><a href="baby3.jpeg" class="glightbox zoom-btn"><i class="bi bi-zoom-in"></i></a></div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-6 gallery-box" data-cat="babyshower">
+            <div class="gallery-item">
+              <img src="baby7.jpg" alt="Cute Baby Moments">
+              <div class="gallery-overlay"><a href="baby7.jpg" class="glightbox zoom-btn"><i class="bi bi-zoom-in"></i></a></div>
+            </div>
+          </div>
+
+          <!-- Nature -->
+          <div class="col-xl-3 col-lg-4 col-md-6 gallery-box" data-cat="nature">
+            <div class="gallery-item">
+              <img src="waterfall.jpg" alt="Waterfall Landscape">
+              <div class="gallery-overlay"><a href="waterfall.jpg" class="glightbox zoom-btn"><i class="bi bi-zoom-in"></i></a></div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-6 gallery-box" data-cat="nature">
+            <div class="gallery-item">
+              <img src="lion.jpg" alt="Wildlife Lion">
+              <div class="gallery-overlay"><a href="lion.jpg" class="glightbox zoom-btn"><i class="bi bi-zoom-in"></i></a></div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-6 gallery-box" data-cat="nature">
+            <div class="gallery-item">
+              <img src="lion2.jpg" alt="Lion Portrait">
+              <div class="gallery-overlay"><a href="lion2.jpg" class="glightbox zoom-btn"><i class="bi bi-zoom-in"></i></a></div>
+            </div>
+          </div>
+
+          <!-- Sports -->
+          <div class="col-xl-3 col-lg-4 col-md-6 gallery-box" data-cat="sports">
+            <div class="gallery-item">
+              <img src="sport1.jpg" alt="Sports Action">
+              <div class="gallery-overlay"><a href="sport1.jpg" class="glightbox zoom-btn"><i class="bi bi-zoom-in"></i></a></div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-6 gallery-box" data-cat="sports">
+            <div class="gallery-item">
+              <img src="sport3.jpg" alt="Athlete Freeze">
+              <div class="gallery-overlay"><a href="sport3.jpg" class="glightbox zoom-btn"><i class="bi bi-zoom-in"></i></a></div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-6 gallery-box" data-cat="sports">
+            <div class="gallery-item">
+              <img src="sport7.jpeg" alt="Sports Match">
+              <div class="gallery-overlay"><a href="sport7.jpeg" class="glightbox zoom-btn"><i class="bi bi-zoom-in"></i></a></div>
+            </div>
+          </div>
+
+          <!-- Travel -->
+          <div class="col-xl-3 col-lg-4 col-md-6 gallery-box" data-cat="travel">
+            <div class="gallery-item">
+              <img src="t1.jpeg" alt="Travel Destination">
+              <div class="gallery-overlay"><a href="t1.jpeg" class="glightbox zoom-btn"><i class="bi bi-zoom-in"></i></a></div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-6 gallery-box" data-cat="travel">
+            <div class="gallery-item">
+              <img src="t4.jpeg" alt="Scenic Journey">
+              <div class="gallery-overlay"><a href="t4.jpeg" class="glightbox zoom-btn"><i class="bi bi-zoom-in"></i></a></div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-6 gallery-box" data-cat="travel">
+            <div class="gallery-item">
+              <img src="t14.jpeg" alt="Heritage Site">
+              <div class="gallery-overlay"><a href="t14.jpeg" class="glightbox zoom-btn"><i class="bi bi-zoom-in"></i></a></div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-6 gallery-box" data-cat="travel">
+            <div class="gallery-item">
+              <img src="t15.jpeg" alt="Travel Discovery">
+              <div class="gallery-overlay"><a href="t15.jpeg" class="glightbox zoom-btn"><i class="bi bi-zoom-in"></i></a></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-4 text-center text-muted" style="background:#090b0e; border-top:1px solid #1e242d; margin-top: 60px;">
+    <div class="container">
+      <small>&copy; 2005 - 2026 Vedant Photography Studios. All Rights Reserved.</small>
+    </div>
+  </footer>
+
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="vendor/glightbox/js/glightbox.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const lightbox = GLightbox({ selector: '.glightbox' });
+
+      // Filtering logic
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const items = document.querySelectorAll('.gallery-box');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          const cat = btn.getAttribute('data-filter');
+          items.forEach(item => {
+            if (cat === 'all' || item.getAttribute('data-cat') === cat) {
+              item.style.display = 'block';
+            } else {
+              item.style.display = 'none';
+            }
+          });
+          lightbox.reload();
+        });
+      });
+    });
+  </script>
+</body>
+</html>
